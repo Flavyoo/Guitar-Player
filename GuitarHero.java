@@ -30,8 +30,8 @@ public class GuitarHero {
 	}
 
     public static void drawKeyboard(int pressed) {
-		StdDraw.clear();
-		white_key(0, 0, pressed == 0);
+            StdDraw.clear();
+	    white_key(0, 0, pressed == 0);
 	    white_key(48, 0, pressed == 2);
 	    white_key(96, 0, pressed == 3);
 	    white_key(144, 0, pressed == 5);
