@@ -32,7 +32,7 @@ public class GuitarHeroVisualizer {
 		GuitarHero gh = new GuitarHero();
 		int pressed = gh.pressed;
 		int SAMPLE_RATE = gh.SAMPLE_RATE;
-	    double sample = gh.sample;
+	        double sample = gh.sample;
 		int j = gh.j;
 		long start = System.currentTimeMillis();
 		double KEYBOARD_REFRESH_DELAY = gh.KEYBOARD_REFRESH_DELAY;
