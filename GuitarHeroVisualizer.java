@@ -24,7 +24,7 @@ public class GuitarHeroVisualizer {
 		if (index > 1) { index = 0; }
 		samples[index] = sample;
 		tics[index] = tic;
-	    StdDraw.line(tics[(index + 1) % size], samples[(index + 1) % size],tics[index],samples[index]);
+	        StdDraw.line(tics[(index + 1) % size], samples[(index + 1) % size],tics[index],samples[index]);
 		index++;
 	}
 
