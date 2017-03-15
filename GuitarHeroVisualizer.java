@@ -13,10 +13,10 @@ public class GuitarHeroVisualizer {
 	}
 
 	public void initialize(int xsize, int ysize, double x1, double y1, double x2, double y2) {
-		StdDraw.setCanvasSize(xsize, ysize);
+	    StdDraw.setCanvasSize(xsize, ysize);
 	    StdDraw.setXscale(x1, x2);
 	    StdDraw.setYscale(y1, y2);
-		StdDraw.setPenColor(StdDraw.BLUE);
+	    StdDraw.setPenColor(StdDraw.BLUE);
 	}
 
 	public void plot(double sample, int tic) {
