@@ -18,7 +18,7 @@ public class GuitarString {
 		}
 
 	}
-	// Create a guitar string whose size and initial values are given by the array.
+	// Create a guitar string with given array and it's values.
 	public GuitarString(double[] init) {
 		rb = new RingBuffer(init.length);
 		for (int i = 0; i < init.length; i++) {
@@ -27,7 +27,7 @@ public class GuitarString {
 
 	}
 
-	// Set the buffer to white noise.
+	// Create White Noise.
 	public void pluck() {
 		// Displacement gets sampled at N numbers.
 		Random random = new Random();
@@ -37,7 +37,7 @@ public class GuitarString {
 		}
 	}
 
-	// Advance the simulation one time step.
+	// Vibrate.
 	public void tic() {
 		double a = rb.dequeue();
 		double b = rb.peek();
