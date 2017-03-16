@@ -106,7 +106,7 @@ public class GuitarHero {
 				StdDraw.clear();
 			}
 
-			// Compute Superposition of tow waves.
+			// Compute Superposition of two waves.
 			sample = 0.3 * keys[j].sample() + 0.2 * keys[(j + 1) % keys.length].sample();
 			double a = tone(440, sample, 1.0 / 220.0);
 			StdAudio.play(a);
