@@ -30,46 +30,6 @@ public class GuitarHero {
 	}
 
     public static void drawKeyboard(int pressed) {
-<<<<<<< Updated upstream
-            StdDraw.clear();
-	    white_key(0, 0, pressed == 0);
-	    white_key(48, 0, pressed == 2);
-	    white_key(96, 0, pressed == 3);
-	    white_key(144, 0, pressed == 5);
-	    white_key(192, 0, pressed == 7);
-	    white_key(240, 0, pressed == 8);
-	    white_key(288, 0, pressed == 10);
-	    white_key(336, 0, pressed == 12);
-	    white_key(384, 0, pressed == 14);
-	    white_key(432, 0, pressed == 15);
-	    white_key(480, 0, pressed == 17);
-	    white_key(528, 0, pressed == 19);
-	    white_key(576, 0, pressed == 20);
-	    white_key(624, 0, pressed == 22);
-	    white_key(672, 0, pressed == 24);
-	    white_key(720, 0, pressed == 26);
-	    white_key(768, 0, pressed == 27);
-	    white_key(816, 0, pressed == 29);
-	    white_key(864, 0, pressed == 31);
-	    white_key(912, 0, pressed == 32);
-	    white_key(960, 0, pressed == 34);
-	    white_key(1008, 0, pressed == 36);
-	    black_key(36, 130, pressed == 1);
-	    black_key(132, 130, pressed == 4);
-	    black_key(180, 130, pressed == 6);
-	    black_key(276, 130, pressed == 9);
-	    black_key(324, 130, pressed == 11);
-	    black_key(372, 130, pressed == 13);
-	    black_key(468, 130, pressed == 16);
-	    black_key(516, 130, pressed == 18);
-	    black_key(612, 130, pressed == 21);
-	    black_key(660, 130, pressed == 23);
-	    black_key(708, 130, pressed == 25);
-	    black_key(804, 130, pressed == 28);
-	    black_key(852, 130, pressed == 30);
-	    black_key(948, 130, pressed == 33);
-	    black_key(996, 130, pressed == 35);
-=======
 		StdDraw.clear();
 		white_key(48, 0, pressed == 0);
 	    white_key(96, 0, pressed == 2);
@@ -108,7 +68,6 @@ public class GuitarHero {
 	    black_key(864, 270, pressed == 30);
 	    black_key(960, 270, pressed == 33);
 	    black_key(1008, 270, pressed == 35);
->>>>>>> Stashed changes
 	}
 
 	// Add a tone effect to the sample.
