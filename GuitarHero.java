@@ -1,15 +1,12 @@
 import java.util.Calendar;
 import java.lang.Math;
 
-
-
 public class GuitarHero {
 	public static int pressed = -1;
 	public static int SAMPLE_RATE = 44100;
-	public static double sample = 0;
+	public static double sample;
 	public static int j = 0;
-	public static long start = 0;
-	public static double KEYBOARD_REFRESH_DELAY = 0.1;
+	public static long initial;
 	public static String keyboard = "q2we4r5ty7u8i9op-[=zxdcfvgbnjmk,.;/' ";
 
 	public static void black_key(int x, int y, boolean pressed) {
@@ -106,14 +103,14 @@ public class GuitarHero {
 
 			// Compute Superposition of two waves.
 			sample = 0.3 * keys[j].sample() + 0.2 * keys[(j + 1) % keys.length].sample();
-			double a = tone(440, sample, 1.0 / 220.0);
+			double a = tone(440, sample, 1.0 / 440.0);
 			StdAudio.play(a);
 			keys[j].tic();
 			keys[(j + 1) % keys.length].tic();
 			// Refresh the keyboard. / Keyboard does not update on time with key pressed.
-			start = System.currentTimeMillis();
-			if (System.currentTimeMillis() - start > KEYBOARD_REFRESH_DELAY) {
-				start = System.currentTimeMillis();
+			initial = System.currentTimeMillis();
+			if (System.currentTimeMillis() - initial > 0.01) {
+				initial = System.currentTimeMillis();
 				drawKeyboard(pressed);
 				StdDraw.show(0);
 			}

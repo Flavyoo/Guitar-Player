@@ -7,7 +7,6 @@ public class RingBuffer {
 	public int first = 0;     // Index of least recently inserted item.
 	public int last = 0;      // Index one beyond the most recentley inserted item.
 	public double[] buffer;   // Contains N number of samples.
-	public int capacity;
 
 	// create an empty ring buffer, with given max capacity
 	public RingBuffer(int capacity) {
@@ -60,7 +59,6 @@ public class RingBuffer {
 			throw new IndexOutOfBoundsException("Cannot peek an empty buffer.");
 		}
 		return buffer[first];
-
 	}
 
 	public static void main(String[] args) {

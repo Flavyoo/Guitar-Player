@@ -2,40 +2,38 @@ import java.lang.Math;
 
 
 public class GuitarHeroVisualizer {
-	public double[] samples;
-	public int[] tics;
-	public int index = 0;
-	public int size = 2;
-
-	public GuitarHeroVisualizer() {
-		samples = new double[2];
-		tics = new int[2];
-	}
+	public double startSample;
+	public int startTic;
+	public double xmax;
+	public double xmin;
 
 	public void initialize(int xsize, int ysize, double x1, double y1, double x2, double y2) {
 	    StdDraw.setCanvasSize(xsize, ysize);
-	    StdDraw.setXscale(x1, x2);
+		xmax = x2;
+		xmin = x1;
+	    StdDraw.setXscale(xmin, xmax);
 	    StdDraw.setYscale(y1, y2);
-	    StdDraw.setPenColor(StdDraw.BLUE);
+	    StdDraw.setPenColor(StdDraw.GREEN);
 	}
 
 	public void plot(double sample, int tic) {
-		// Add the sample to samples array
-		if (index > 1) { index = 0; }
-		samples[index] = sample;
-		tics[index] = tic;
-	        StdDraw.line(tics[(index + 1) % size], samples[(index + 1) % size],tics[index],samples[index]);
-		index++;
+		StdDraw.line(startTic, startSample, tic, sample);
+		if (tic >= xmax) { StdDraw.setXscale(xmax, 2 * xmax); }
+		if (tic == 1) {
+			StdDraw.pause(10);
+			StdDraw.setXscale(xmin, xmax);
+		}
+		startSample = sample;
+		startTic = tic;
 	}
 
 	public static void main (String[] args) {
 		GuitarHero gh = new GuitarHero();
 		int pressed = gh.pressed;
 		int SAMPLE_RATE = gh.SAMPLE_RATE;
-	        double sample = gh.sample;
+	    double sample = gh.sample;
 		int j = gh.j;
-		long start = System.currentTimeMillis();
-		double KEYBOARD_REFRESH_DELAY = gh.KEYBOARD_REFRESH_DELAY;
+		long initial = System.currentTimeMillis();
 		String keyboard = gh.keyboard;
 
 		GuitarString[] keys = new GuitarString[37];
@@ -45,8 +43,8 @@ public class GuitarHeroVisualizer {
 		}
 
 		GuitarHeroVisualizer ghv = new GuitarHeroVisualizer();
-		ghv.initialize(1000, 500, -1, -5, 500, 5);
-
+		ghv.initialize(800, 500, 0, -5, 500, 5);
+		StdDraw.enableDoubleBuffering();
 		while (true) {
 			if (StdDraw.hasNextKeyTyped()) {
 				char key = StdDraw.nextKeyTyped();
@@ -66,16 +64,16 @@ public class GuitarHeroVisualizer {
 			// Compute Superposition of two waves.
 			sample = 0.3 * keys[j].sample() + 0.2 * keys[(j + 1) % keys.length].sample();
 			double a = gh.tone(440, sample, 1.0 / 220.0);
-			StdAudio.play(a);
-			ghv.plot(a, keys[j].time());
 			keys[j].tic();
 			keys[(j + 1) % keys.length].tic();
-
-			// Refresh the keyboard.
-			start = System.currentTimeMillis();
-			if (System.currentTimeMillis() - start > KEYBOARD_REFRESH_DELAY) {
-				start = System.currentTimeMillis();
-				StdDraw.show(0);
+			StdAudio.play(a);
+			StdDraw.clear();
+			ghv.plot(a, keys[j].time());
+			StdDraw.pause(10);
+			initial = System.currentTimeMillis();
+			if (System.currentTimeMillis() - initial > 0.01) {
+				initial = System.currentTimeMillis();
+				StdDraw.show();
 			}
 		}
 	}
